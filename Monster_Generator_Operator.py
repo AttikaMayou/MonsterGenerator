@@ -226,27 +226,31 @@ def create_random_army(L, P):
             bpy.context.scene.cursor_location = (float(x * 10), float(y * 10), 0.0)
             create_random_monster()
     
-class TreeGeneratorOperator(bpy.types.Operator):
+class MonsterGeneratorOperator(bpy.types.Operator):
     bl_idname = "object.monster_generator"
     bl_label = "monster_Generator"
     
-    arm_min_value = bpy.props.FloatProperty(name="Arm min value")
-    arm_max_value = bpy.props.FloatProperty(name="Arm max value")
+    arm_min_value = bpy.props.FloatProperty(name="Arm min value", default=1)
+    arm_max_value = bpy.props.FloatProperty(name="Arm max value", default=1)
 
-    leg_min_value = bpy.props.FloatProperty(name="Leg min value")
-    leg_max_value = bpy.props.FloatProperty(name="Leg max value")
+    leg_min_value = bpy.props.FloatProperty(name="Leg min value", default=1)
+    leg_max_value = bpy.props.FloatProperty(name="Leg max value", default=1)
 
 
     def execute(self, context):
         #create_random_army(3, 1)
+        print("arm min value :" + self.arm_min_value)
+        print("arm max value :" + self.arm_max_value)
+        print("leg min value :" + self.leg_min_value)
+        print("leg min value :" + self.leg_max_value)
         create_random_monster()
         return {'FINISHED'}
         
 def register():
-    bpy.utils.register_class(TreeGeneratorOperator)
+    bpy.utils.register_class(MonsterGeneratorOperator)
     
 def unregister():
-    bpy.utils.unregister_class(TreeGeneratorOperator)
+    bpy.utils.unregister_class(MonsterGeneratorOperator)
 
 
 if __name__ == "__main__":
